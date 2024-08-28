@@ -40,13 +40,13 @@ class Item(BaseModel):
     _summary_
     '''
     name: str
-    description: str = None
+    description: str | None = None
     price: float
-    tax: float = None
+    tax: float | None = None
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int,
-                    q: str = None,
+                    q: str | None = None,
                     api_key: str = Depends(get_api_key)) -> dict[str, Any]: # pylint: disable=unused-argument
     '''
     Endpoint to read items
